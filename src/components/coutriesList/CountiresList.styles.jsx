@@ -3,11 +3,15 @@ import CountryCard from "../countryCard/CountryCard";
 
 export const ListSection = Styled.section`
     padding:0 1rem;
+    @media(min-width:768px){
+        padding: 0;
+    }
 `;
 
 export const List = Styled.div`
     display:flex;
-    flex-wrap:wrap;    
+    flex-wrap:wrap;
+    gap:4rem;    
 `;
 
 export const StyledCountryCard = Styled(CountryCard)`
@@ -19,7 +23,8 @@ export const StyledCountryCard = Styled(CountryCard)`
         width:calc(33.33% - 2rem);
     }
     @media(min-width:967px){
-        width:calc(25% - 4rem);
-        margin:2rem;
+        width:calc(25% - 3rem);
+        margin:0;
+
     }
 `;

@@ -15,6 +15,9 @@ export const Image = Styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url(${(props) => props.url});
+    @media(min-width:768px){
+        height:9rem;
+    }
 `;
 
 export const FlagImg = Styled.img`

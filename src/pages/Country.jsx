@@ -3,6 +3,7 @@ import axios from "axios";
 import Button from "../components/button/Button";
 import HomeContainer from "../components/homeContainer/HomeContainer";
 import ContentSection from "../components/contentSection/ContentSection";
+import SingleCountryContainer from "../components/singleCountryContainer/SingleCountryContainer";
 import { useParams, useNavigate } from "react-router-dom";
 
 const Country = () => {
@@ -23,13 +24,15 @@ const Country = () => {
       });
       setCountry(response.data);
     } catch (err) {
-      console.log(err);
+      setError(err);
     }
   };
 
   useEffect(() => {
     getCountryData(title);
   }, []);
+
+  console.log(country);
 
   return (
     <HomeContainer>
@@ -42,7 +45,23 @@ const Country = () => {
         >
           back
         </Button>
-        {title}
+        {country ? (
+          <SingleCountryContainer
+            name={country[0].name.common}
+            url={country[0].flags.svg}
+            nativeName={country[0].name.nativeName}
+            population={country[0].population}
+            region={country[0].region}
+            subRegion={country[0].subregion}
+            capital={country[0].capital}
+            currency={country[0].currencies}
+            languages={country[0].languages}
+            domain={country[0].name.common}
+            neighbors={country[0].borders}
+          />
+        ) : (
+          <div>loading</div>
+        )}
       </ContentSection>
     </HomeContainer>
   );

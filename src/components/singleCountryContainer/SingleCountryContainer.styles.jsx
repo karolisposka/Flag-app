@@ -12,10 +12,15 @@ export const Container = Styled.div`
     }
 `;
 
-export const Image = Styled.img`
-    width:100%;
+export const Image = Styled.div`
+    height:16.25rem;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(${(props) => props.url});
     @media(min-width:768px){
-       max-width:50%;
+       width:50%;
+       height:25rem;
     }
 `;
 
@@ -107,4 +112,9 @@ export const NoData = Styled.div`
     padding:1rem;
     text-align:center;
     color:${(props) => props.theme.fonts.color.primary};
+    @media(min-width:768px){
+        display:inline;
+        padding:0.25rem 2rem;
+        border-radius:0.25rem;
+    }
 `;

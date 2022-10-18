@@ -18,7 +18,7 @@ const SingleCountryContainer = ({
   const navigate = useNavigate();
   return (
     <S.Container>
-      <S.Image src={url} />
+      <S.Image url={url} />
       <S.InfoWrapper>
         <S.Title>{name}</S.Title>
         <S.Text>

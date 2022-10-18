@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import HomeContainer from "../components/homeContainer/HomeContainer";
 import Filter from "../components/filter/Filter";
 import Select from "../components/select/Select";
@@ -19,8 +19,40 @@ const options = [
 const Home = () => {
   const [countries, setCountries] = useState();
   const [error, setError] = useState();
-  const params = useParams();
-  const navigate = useNavigate();
+  const [search, setSearch] = useSearchParams();
+
+  const sortCountriesByContitent = async (region) => {
+    try {
+      const response = await axios({
+        baseURL: process.env.REACT_APP_BASE_URL,
+        url: `region/${region}`,
+        method: "get",
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+      setCountries(response.data);
+    } catch (err) {
+      setError("no data found");
+    }
+  };
+
+  const searchCountriesByTitle = async (title) => {
+    try {
+      const response = await axios({
+        baseURL: process.env.REACT_APP_BASE_URL,
+        url: `name/${title}`,
+        method: "get",
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+
+      setCountries(response.data);
+    } catch (err) {
+      setError(err);
+    }
+  };
 
   const getCountries = async () => {
     try {
@@ -38,18 +70,34 @@ const Home = () => {
     }
   };
 
-  const handleSelectChange = (value) => {
-    console.log(value);
+  const handleSelectChange = (sort) => {
+    setSearch({ sort });
+  };
+
+  const handleChange = (title) => {
+    setSearch({ title });
   };
 
   useEffect(() => {
-    getCountries();
-  }, []);
+    const title = search.get("title");
+    const sort = search.get("sort");
+    if (title) {
+      searchCountriesByTitle(title);
+    } else if (sort) {
+      sortCountriesByContitent(sort);
+    } else {
+      getCountries();
+    }
+  }, [search.get("sort"), search.get("title")]);
 
   return (
     <HomeContainer>
       <FiltersContainer>
-        <Filter handleChange={(value) => {}} />
+        <Filter
+          handleChange={(value) => {
+            handleChange(value);
+          }}
+        />
         <Select
           options={options}
           placeholder="Filter by Region"

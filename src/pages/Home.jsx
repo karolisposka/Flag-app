@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import HomeContainer from "../components/homeContainer/HomeContainer";
 import Filter from "../components/filter/Filter";
 import Select from "../components/select/Select";
+import Loader from "../components/loader/Loader";
 import CountriesList from "../components/coutriesList/CountriesList";
 
 const options = [
@@ -54,7 +55,7 @@ const Home = () => {
           handleSelectChange(value);
         }}
       />
-      <CountriesList countries={countries} />
+      {countries ? <CountriesList countries={countries} /> : <Loader />}
     </HomeContainer>
   );
 };

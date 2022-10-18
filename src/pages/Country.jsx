@@ -32,8 +32,6 @@ const Country = () => {
     getCountryData(title);
   }, []);
 
-  console.log(country);
-
   return (
     <HomeContainer>
       <ContentSection>

@@ -41,14 +41,14 @@ const SingleCountryContainer = ({
       </S.Key>
       <S.Key>
         Languages:
-        {Object.values(languages).map((language) => (
-          <S.Span> {language} </S.Span>
+        {Object.values(languages).map((language, index) => (
+          <S.Span key={index}> {language} </S.Span>
         ))}
       </S.Key>
       <S.Title>Border Countries</S.Title>
       <S.BorderCountriesWrapper>
-        {neighbors.length > 0 && neighbors ? (
-          neighbors.map((country) => <S.StyledButton> {country} </S.StyledButton>)
+        {neighbors && neighbors.length > 0 ? (
+          neighbors.map((country, index) => <S.StyledButton key={index}> {country} </S.StyledButton>)
         ) : (
           <div> No countries </div>
         )}

@@ -4,6 +4,7 @@ import * as S from "./CountryCard.styles";
 
 const CountryCard = ({ url, title, population, region, capital, className }) => {
   const navigate = useNavigate();
+
   const formatPopulation = (population) => {
     return population.toLocaleString();
   };

@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import Button from "../components/button/Button";
+import HomeContainer from "../components/homeContainer/HomeContainer";
+import ContentSection from "../components/contentSection/ContentSection";
+import { useParams, useNavigate } from "react-router-dom";
 
 const Country = () => {
-  const location = useLocation();
+  const { title } = useParams();
+  const navigate = useNavigate();
   const [country, setCountry] = useState();
   const [error, setError] = useState();
 
@@ -17,15 +21,31 @@ const Country = () => {
           "Content-type": "application/json",
         },
       });
-      await setCountry(response.data);
+      setCountry(response.data);
     } catch (err) {
       console.log(err);
     }
   };
 
-  console.log(country);
+  useEffect(() => {
+    getCountryData(title);
+  }, []);
 
-  return <div>{location.pathname}</div>;
+  return (
+    <HomeContainer>
+      <ContentSection>
+        <Button
+          handleClick={() => {
+            navigate(-1);
+          }}
+          arrow={true}
+        >
+          back
+        </Button>
+        {title}
+      </ContentSection>
+    </HomeContainer>
+  );
 };
 
 export default Country;

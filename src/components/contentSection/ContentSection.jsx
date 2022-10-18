@@ -8,7 +8,6 @@ const ContentSection = ({ children, className }) => {
 
 ContentSection.propTypes = {
   children: PropTypes.node.isRequired,
-  className: PropTypes.string.isRequired,
 };
 
 export default ContentSection;

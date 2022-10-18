@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import HomeContainer from "../components/homeContainer/HomeContainer";
 import Filter from "../components/filter/Filter";
 import Select from "../components/select/Select";
 import Loader from "../components/loader/Loader";
 import FiltersContainer from "../components/filtersContainer/FiltersContainer";
 import CountriesList from "../components/coutriesList/CountriesList";
+
+//options of select element
 
 const options = [
   { value: "Africa", label: "Africa" },
@@ -20,6 +22,8 @@ const Home = () => {
   const [countries, setCountries] = useState();
   const [error, setError] = useState();
   const [search, setSearch] = useSearchParams();
+
+  //fetch countries by region
 
   const sortCountriesByContitent = async (region) => {
     try {
@@ -36,6 +40,8 @@ const Home = () => {
       setError("no data found");
     }
   };
+
+  //fetch countries by name
 
   const searchCountriesByTitle = async (title) => {
     try {
@@ -54,11 +60,13 @@ const Home = () => {
     }
   };
 
+  //fetch all countries
+
   const getCountries = async () => {
     try {
       const res = await axios({
         baseURL: process.env.REACT_APP_BASE_URL,
-        url: `${process.env.REACT_APP_ALL_DATA}`,
+        url: `all`,
         method: "get",
         headers: {
           "Content-type": "application/json",
@@ -70,15 +78,8 @@ const Home = () => {
     }
   };
 
-  const handleSelectChange = (sort) => {
-    setSearch({ sort });
-  };
-
-  const handleChange = (title) => {
-    setSearch({ title });
-  };
-
   useEffect(() => {
+    setCountries(null);
     const title = search.get("title");
     const sort = search.get("sort");
     if (title) {
@@ -89,6 +90,16 @@ const Home = () => {
       getCountries();
     }
   }, [search.get("sort"), search.get("title")]);
+
+  //event handlers
+
+  const handleSelectChange = (sort) => {
+    setSearch({ sort });
+  };
+
+  const handleChange = (title) => {
+    setSearch({ title });
+  };
 
   return (
     <HomeContainer>

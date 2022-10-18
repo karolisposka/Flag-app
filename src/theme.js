@@ -23,7 +23,8 @@ export const lightTheme = {
     shadow:{
         primary: '0px -1px 14px 2px #f6f6f6bf',
         secondary: '#c9c9c9bf',
-        button: '0px -1px 14px 2px #262626bf',
+        button: '0px 2px 10px 4px rgba(181,173,173,0.71)',
+        wide: '0px 2px 10px 21px rgba(243 247 246)',
     },
 }
 
@@ -48,7 +49,8 @@ export const darkTheme = {
     shadow:{
         primary: '0px -1px 14px 2px #262626bf',
         secondary: '0px -1px 14px 2px #262626bf',
-        button: '0px -1px 14px 2px #696868'
+        button:'0px 2px 5px 1px hsl(207, 26%, 17%)',
+        wide: '0px 2px 10px 21px rgba(36, 46, 55)',
     } 
 }
 

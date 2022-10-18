@@ -17,6 +17,9 @@ export const Image = Styled.div`
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    width:100%;
+    transition:0.3s ease-in-out;
+    box-shadow:${(props) => props.theme.shadow.wide};
     background-image: url(${(props) => props.url});
     @media(min-width:768px){
        width:50%;
@@ -32,10 +35,11 @@ export const InfoWrapper = Styled.div`
 
 export const Title = Styled.h2`
     color:${(props) => props.theme.fonts.color.primary};
-    margin:2rem 0;
+    margin:1rem 0;
     &&:nth-of-type(2){
         font-weight:${(props) => props.theme.fonts.weight.strong};
         font-size:16px;
+        margin:1rem 0;
         @media(min-width:768px){
             font-size:14px;
             display:inline;
@@ -83,7 +87,7 @@ export const Span = Styled.span`
 `;
 
 export const List = Styled.div`
-    
+    margin:0;
     
 `;
 
@@ -98,7 +102,9 @@ export const BorderCountriesWrapper = Styled.div`
 
 export const StyledButton = Styled(Button)`
     display:inline-block;
-    width:calc(33.33% - 1rem);
+    text-align:center;
+    width:calc(33.33% - 0.45rem);
+    margin: 0rem;
     @media(min-width:768px){
         width:20%;
         margin:0.25rem;

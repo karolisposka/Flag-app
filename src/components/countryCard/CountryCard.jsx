@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import * as S from "./CountryCard.styles";
 
@@ -31,6 +32,14 @@ const CountryCard = ({ url, title, population, region, capital, className }) => 
       </S.InfoWrapper>
     </S.Container>
   );
+};
+
+CountryCard.propTypes = {
+  url: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  population: PropTypes.number.isRequired,
+  region: PropTypes.string.isRequired,
+  capital: PropTypes.array,
 };
 
 export default CountryCard;

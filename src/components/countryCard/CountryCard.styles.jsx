@@ -10,7 +10,7 @@ export const Container = Styled.div`
 `;
 
 export const Image = Styled.div`
-    height:16.25rem;
+    height:10rem;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

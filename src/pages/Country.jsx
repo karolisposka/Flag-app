@@ -13,6 +13,8 @@ const Country = () => {
   const [data, setData] = useState();
   const [error, setError] = useState();
 
+  //fetch country data
+
   const getCountryData = async (title) => {
     try {
       const response = await axios({
@@ -28,6 +30,8 @@ const Country = () => {
       setError(err);
     }
   };
+
+  //fetch selected country neighbor data
 
   const getNeighborCountry = async (title) => {
     try {
@@ -60,7 +64,7 @@ const Country = () => {
         <Button
           style={{ margin: "2rem" }}
           handleClick={() => {
-            navigate(-1);
+            navigate("/");
           }}
           arrow={true}
         >

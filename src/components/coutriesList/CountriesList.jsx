@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import * as S from "./CountiresList.styles";
 
 const CountriesList = ({ countries }) => {
@@ -19,6 +20,18 @@ const CountriesList = ({ countries }) => {
       </S.List>
     </S.ListSection>
   );
+};
+
+CountriesList.propTypes = {
+  countries: PropTypes.arrayOf(
+    PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      population: PropTypes.number.isRequired,
+      region: PropTypes.string.isRequired,
+      capital: PropTypes.array,
+    })
+  ),
 };
 
 export default CountriesList;

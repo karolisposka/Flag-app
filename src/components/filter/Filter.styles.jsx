@@ -15,6 +15,11 @@ export const FilterContainer = Styled.div`
     }
 
 `;
+export const Form = Styled.form`
+    display:flex;
+    
+    
+`;
 
 export const Input = Styled.input`
     background:transparent;
@@ -32,8 +37,15 @@ export const Input = Styled.input`
 
 `;
 
+export const Button = Styled.button`
+    background:transparent;
+    border:none;
+    cursor:pointer;
+    display:inline;
+    
+`;
+
 export const FilterIcon = Styled(FaSearch)`
    color:${(props) => props.theme.fonts.color.primary};
    margin-left:1rem;
-
 `;

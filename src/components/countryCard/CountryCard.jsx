@@ -15,7 +15,7 @@ const CountryCard = ({ url, title, population, region, capital, className }) => 
         navigate(`/${title}`);
       }}
     >
-      <S.FlagImg src={url} />
+      <S.Image url={url} />
       <S.InfoWrapper>
         <S.Title>{title}</S.Title>
         <S.Key>

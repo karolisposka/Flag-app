@@ -9,12 +9,18 @@ export const Container = Styled.div`
     box-shadow: ${(props) => props.theme.shadow.primary};
 `;
 
+export const Image = Styled.div`
+    height:16.25rem;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(${(props) => props.url});
+`;
+
 export const FlagImg = Styled.img`
-    float: left;
     max-width:  100%;
     height: 10rem;
     object-fit: fill;
-   
     margin-bottom: 2rem;
 `;
 

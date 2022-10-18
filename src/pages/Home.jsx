@@ -5,6 +5,7 @@ import HomeContainer from "../components/homeContainer/HomeContainer";
 import Filter from "../components/filter/Filter";
 import Select from "../components/select/Select";
 import Loader from "../components/loader/Loader";
+import FiltersContainer from "../components/filtersContainer/FiltersContainer";
 import CountriesList from "../components/coutriesList/CountriesList";
 
 const options = [
@@ -47,14 +48,16 @@ const Home = () => {
 
   return (
     <HomeContainer>
-      <Filter handleChange={(value) => {}} />
-      <Select
-        options={options}
-        placeholder="Filter by Region"
-        handleChange={(value) => {
-          handleSelectChange(value);
-        }}
-      />
+      <FiltersContainer>
+        <Filter handleChange={(value) => {}} />
+        <Select
+          options={options}
+          placeholder="Filter by Region"
+          handleChange={(value) => {
+            handleSelectChange(value);
+          }}
+        />
+      </FiltersContainer>
       {countries ? <CountriesList countries={countries} /> : <Loader />}
     </HomeContainer>
   );

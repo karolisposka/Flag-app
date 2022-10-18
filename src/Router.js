@@ -19,6 +19,7 @@ const Router = () => {
             <Route exact path="/" >
                 <Route index element={<Home/>}/>
                 <Route exact path=':title' element={<Country/>}/>
+                <Route exact path='/neighbor/:country' element={<Country/>}/>
             </Route>
           </Routes>
         </BrowserRouter>

@@ -48,7 +48,7 @@ export const darkTheme = {
     shadow:{
         primary: '0px -1px 14px 2px #262626bf',
         secondary: '0px -1px 14px 2px #262626bf',
-        button: '0px -1px 14px 2px #262626bf'
+        button: '0px -1px 14px 2px #696868'
     } 
 }
 

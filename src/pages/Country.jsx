@@ -4,12 +4,13 @@ import Button from "../components/button/Button";
 import HomeContainer from "../components/homeContainer/HomeContainer";
 import ContentSection from "../components/contentSection/ContentSection";
 import SingleCountryContainer from "../components/singleCountryContainer/SingleCountryContainer";
+import Loader from "../components/loader/Loader";
 import { useParams, useNavigate } from "react-router-dom";
 
 const Country = () => {
-  const { title } = useParams();
+  const params = useParams();
   const navigate = useNavigate();
-  const [country, setCountry] = useState();
+  const [data, setData] = useState();
   const [error, setError] = useState();
 
   const getCountryData = async (title) => {
@@ -22,20 +23,42 @@ const Country = () => {
           "Content-type": "application/json",
         },
       });
-      setCountry(response.data);
+      setData(response.data);
     } catch (err) {
       setError(err);
     }
   };
 
+  const getNeighborCountry = async (title) => {
+    try {
+      const response = await axios({
+        baseURL: process.env.REACT_APP_BASE_URL,
+        url: `alpha/${title}`,
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+      setData(response.data);
+    } catch (err) {
+      console.log(err);
+      setError(err);
+    }
+  };
+
   useEffect(() => {
-    getCountryData(title);
-  }, []);
+    if (params.title) {
+      getCountryData(params.title);
+    } else {
+      getNeighborCountry(params.country);
+    }
+  }, [params]);
 
   return (
     <HomeContainer>
       <ContentSection>
         <Button
+          style={{ margin: "2rem" }}
           handleClick={() => {
             navigate(-1);
           }}
@@ -43,22 +66,22 @@ const Country = () => {
         >
           back
         </Button>
-        {country ? (
+        {data ? (
           <SingleCountryContainer
-            name={country[0].name.common}
-            url={country[0].flags.svg}
-            nativeName={country[0].name.nativeName}
-            population={country[0].population}
-            region={country[0].region}
-            subRegion={country[0].subregion}
-            capital={country[0].capital}
-            currency={country[0].currencies}
-            languages={country[0].languages}
-            domain={country[0].name.common}
-            neighbors={country[0].borders}
+            name={data[0].name.common}
+            url={data[0].flags.svg}
+            nativeName={data[0].name.nativeName}
+            population={data[0].population}
+            region={data[0].region}
+            subRegion={data[0].subregion}
+            capital={data[0].capital}
+            currency={data[0].currencies}
+            languages={data[0].languages}
+            domain={data[0].name.common}
+            neighbors={data[0].borders}
           />
         ) : (
-          <div>loading</div>
+          <Loader />
         )}
       </ContentSection>
     </HomeContainer>

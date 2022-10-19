@@ -48,7 +48,7 @@ export const Loader = Styled.div`
 
 export const LoaderItem = Styled.div`
     position: absolute;
-    border: 4px solid #fff;
+    border: 4px solid ${(props) => props.theme.fonts.color.primary};
     opacity: 1;
     border-radius: 50%;
     animation: ${spin} 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;

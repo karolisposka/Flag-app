@@ -18,7 +18,7 @@ const Country = () => {
   const getCountryData = async (title) => {
     try {
       const response = await axios({
-        baseURL: process.env.REACT_APP_BASE_URL,
+        baseURL: "https://restcountries.com/v3.1/",
         url: `name/${title}?fullText=true`,
         method: "GET",
         headers: {
@@ -36,7 +36,7 @@ const Country = () => {
   const getNeighborCountry = async (title) => {
     try {
       const response = await axios({
-        baseURL: process.env.REACT_APP_BASE_URL,
+        baseURL: "https://restcountries.com/v3.1/",
         url: `alpha/${title}`,
         method: "GET",
         headers: {
@@ -62,7 +62,6 @@ const Country = () => {
     <HomeContainer>
       <ContentSection>
         <Button
-          style={{ margin: "2rem" }}
           handleClick={() => {
             navigate("/");
           }}

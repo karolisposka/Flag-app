@@ -8,27 +8,31 @@ export const Container = Styled.div`
     @media(min-width:768px){
         display:flex;
         align-items:start;
-        min-height:80vh;
+        min-height:85vh;
     }
 `;
 
-export const Image = Styled.div`
-    height:16.25rem;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+export const ImageWrapper = Styled.div`
     width:100%;
+    @media(min-width:768px){
+       flex:1;
+    }
+
+`;
+
+export const Image = Styled.img`
+    
+    width:100%;
+    object-fit: contain;
     transition:0.3s ease-in-out;
     box-shadow:${(props) => props.theme.shadow.wide};
     background-image: url(${(props) => props.url});
-    @media(min-width:768px){
-       width:50%;
-       height:25rem;
-    }
 `;
 
 export const InfoWrapper = Styled.div`
+    
      @media(min-width:768px){
+        flex:1;
         margin-left:5rem;
     }
 `;

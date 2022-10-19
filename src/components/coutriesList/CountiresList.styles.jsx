@@ -16,8 +16,11 @@ export const List = Styled.div`
 
 export const StyledCountryCard = Styled(CountryCard)`
     width:100%;
+    @media(min-width:568px) and (max-width: 767px){
+        width: calc(50% - 4rem);
+    }
     @media(min-width:768px) and (max-width:966px) {
-        width:calc(33.33% - 2.5rem);
+        width:calc(33.33% - 2.7rem);
         margin:0;
     }
     @media(min-width:967px){

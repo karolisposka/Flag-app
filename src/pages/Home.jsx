@@ -28,7 +28,7 @@ const Home = () => {
   const sortCountriesByContitent = async (region) => {
     try {
       const response = await axios({
-        baseURL: process.env.REACT_APP_BASE_URL,
+        baseURL: "https://restcountries.com/v3.1/",
         url: `region/${region}`,
         method: "get",
         headers: {
@@ -46,7 +46,7 @@ const Home = () => {
   const searchCountriesByTitle = async (title) => {
     try {
       const response = await axios({
-        baseURL: process.env.REACT_APP_BASE_URL,
+        baseURL: "https://restcountries.com/v3.1/",
         url: `name/${title}`,
         method: "get",
         headers: {
@@ -65,7 +65,7 @@ const Home = () => {
   const getCountries = async () => {
     try {
       const res = await axios({
-        baseURL: process.env.REACT_APP_BASE_URL,
+        baseURL: "https://restcountries.com/v3.1/",
         url: `all`,
         method: "get",
         headers: {

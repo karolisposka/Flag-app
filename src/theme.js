@@ -23,7 +23,7 @@ export const lightTheme = {
     shadow:{
         primary: '0px -1px 14px 2px #f6f6f6bf',
         secondary: '#c9c9c9bf',
-        button: '0px 2px 10px 4px rgba(181,173,173,0.71)',
+        button: '0px 0px 1px 2px rgba(181,173,173, 0.2)',
         wide: '0px 2px 10px 21px rgba(243 247 246)',
     },
 }

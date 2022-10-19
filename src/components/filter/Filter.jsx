@@ -6,7 +6,12 @@ const Filter = ({ handleChange }) => {
   return (
     <S.FilterContainer>
       <S.FilterIcon />
-      <S.Input name="query" placeholder="search for a country..." onChange={(e) => handleChange(e.target.value)} />
+      <S.Input
+        type="text"
+        name="query"
+        placeholder="search for a country..."
+        onChange={(e) => handleChange(e.target.value)}
+      />
     </S.FilterContainer>
   );
 };

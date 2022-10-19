@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import HomeContainer from "../components/homeContainer/HomeContainer";
 import Filter from "../components/filter/Filter";
 import Select from "../components/select/Select";
+import Notification from "../components/notification/Notification";
 import Loader from "../components/loader/Loader";
 import FiltersContainer from "../components/filtersContainer/FiltersContainer";
 import CountriesList from "../components/coutriesList/CountriesList";
@@ -36,8 +37,9 @@ const Home = () => {
         },
       });
       setCountries(response.data);
+      setError(null);
     } catch (err) {
-      setError("no data found");
+      setError(err.response.data.message);
     }
   };
 
@@ -55,8 +57,10 @@ const Home = () => {
       });
 
       setCountries(response.data);
+      setError(null);
     } catch (err) {
-      setError(err);
+      setError(err.response.data.message);
+      setCountries([]);
     }
   };
 
@@ -73,8 +77,9 @@ const Home = () => {
         },
       });
       await setCountries(res.data);
+      setError(null);
     } catch (err) {
-      setError(err);
+      setError(err.response.data.message);
     }
   };
 
@@ -117,7 +122,8 @@ const Home = () => {
           }}
         />
       </FiltersContainer>
-      {countries ? <CountriesList countries={countries} /> : <Loader />}
+      {countries ? <CountriesList countries={countries} error={error} /> : <Loader />}
+      {error && <Notification>{error}</Notification>}
     </HomeContainer>
   );
 };

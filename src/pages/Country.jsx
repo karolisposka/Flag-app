@@ -13,7 +13,7 @@ const Country = () => {
   const [data, setData] = useState();
   const [error, setError] = useState();
 
-  //fetch country data
+  //fetch selected country data
 
   const getCountryData = async (title) => {
     try {

@@ -20,7 +20,7 @@ const options = [
 ];
 
 const Home = () => {
-  const [countries, setCountries] = useState();
+  const [countries, setCountries] = useState(null);
   const [error, setError] = useState();
   const [search, setSearch] = useSearchParams();
 
@@ -42,8 +42,6 @@ const Home = () => {
       setError(err.response.data.message);
     }
   };
-
-  //fetch countries by name
 
   const searchCountriesByTitle = async (title) => {
     try {

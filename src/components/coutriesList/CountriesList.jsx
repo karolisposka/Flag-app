@@ -10,7 +10,7 @@ const CountriesList = ({ countries }) => {
           countries.map((country, index) => (
             <S.StyledCountryCard
               key={index}
-              url={country.flags.png}
+              url={country.flags.svg}
               title={country.name.common}
               population={country.population}
               region={country.region}
@@ -25,12 +25,12 @@ const CountriesList = ({ countries }) => {
 CountriesList.propTypes = {
   countries: PropTypes.arrayOf(
     PropTypes.shape({
-      url: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      population: PropTypes.number.isRequired,
-      region: PropTypes.string.isRequired,
+      url: PropTypes.string,
+      title: PropTypes.string,
+      population: PropTypes.number,
+      region: PropTypes.string,
       capital: PropTypes.array,
-    })
+    }).isRequired
   ),
 };
 

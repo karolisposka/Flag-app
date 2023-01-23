@@ -76,7 +76,7 @@ const Home = () => {
           "Content-type": "application/json",
         },
       });
-      await setCountries(res.data);
+      setCountries(res.data);
       setError(null);
     } catch (err) {
       setError(err.response.data.message);

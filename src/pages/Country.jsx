@@ -4,6 +4,7 @@ import Button from "../components/button/Button";
 import HomeContainer from "../components/homeContainer/HomeContainer";
 import ContentSection from "../components/contentSection/ContentSection";
 import SingleCountryContainer from "../components/singleCountryContainer/SingleCountryContainer";
+import Notification from "../components/notification/Notification";
 import Loader from "../components/loader/Loader";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -60,6 +61,7 @@ const Country = () => {
 
   return (
     <HomeContainer>
+      {error && <Notification>{error}</Notification>}
       <ContentSection>
         <Button
           handleClick={() => {

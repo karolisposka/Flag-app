@@ -18,26 +18,35 @@ const Select = ({ className, handleChange, placeholder, options }) => {
         color: "red",
         display: "flex",
       }),
-      container: (provided, state) => ({
+      container: (provided) => ({
         ...provided,
         background: theme === "dark" ? darkBg : lightBg,
       }),
-      menu: (provided, state) => ({
+      menu: (provided) => ({
         ...provided,
         background: theme === "dark" ? darkBg : lightBg,
       }),
-      option: (provided, state) => ({
+      option: (provided) => ({
         ...provided,
         color: theme === "dark" ? darkFont : lightFont,
         background: theme === "dark" ? darkBg : lightBg,
       }),
-      placeholder: (provided, state) => ({
+      placeholder: (provided) => ({
         ...provided,
         color: theme === "dark" ? darkFont : lightFont,
       }),
-      singleValue: (provided, state) => ({
+      singleValue: (provided) => ({
         ...provided,
         color: theme === "dark" ? darkFont : lightFont,
+      }),
+      dropdownIndicator: (provided, state) => ({
+        ...provided,
+        color: theme === "dark" ? "#ffffff" : "#000000",
+        "&:hover": {
+          color: theme === "dark" ? "#ffffff" : "#000000",
+        },
+        transition: "all .2s ease",
+        transform: state.selectProps.menuIsOpen ? "rotate(180deg)" : null,
       }),
     };
   };

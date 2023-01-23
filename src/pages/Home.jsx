@@ -92,7 +92,7 @@ const Home = () => {
     } else {
       getCountries();
     }
-  }, [search.get("sort"), search.get("title")]);
+  }, [search]);
 
   //event handlers
 
